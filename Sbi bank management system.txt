@@ -1,0 +1,673 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
+import java.util.Scanner;
+
+public class SBI {
+	static String fname;
+	static String fstate;
+	static String fdst;
+	static String fbranch;
+	static long fmobileno;
+	static long fbalance;
+	static String femail;
+	static String fpass1;
+	static long fpno;
+	static long credit;
+	static long withdraw;
+	static long prebal;
+	
+	 static long[] accno=new long[] {3434324344L};
+	 static String[] ifsc=new String[] {"SBIN99999"};
+	    
+	
+	static Scanner scn=new Scanner(System.in);
+	static void Mainmenu() {
+		System.out.println("=============================");
+		System.out.println("|   State Bank Of India     |");
+		System.out.println("=============================");
+		System.out.println("-----------------------------");
+		System.out.println("=========================================");
+		System.out.println("|  Create new BankAccount     :Press 1  |");
+		System.out.println("=========================================");
+		System.out.println("|  Create Online NetBanking   :Press 2  |");
+		System.out.println("=========================================");
+		System.out.println("|  Login sbi bankAccount      :Press 3  |");
+		System.out.println("=========================================");
+
+		
+		switch(scn.nextInt()) {
+		case 1:{
+			Account();
+			break;
+		}
+		case 2:{
+			NetBanking();
+			break;
+		}
+		case 3:{
+			Login();
+			break;
+		}
+		default:
+		{
+			System.out.println("====================");
+			System.out.println("Choose valid option");
+			System.out.println("====================");
+			Mainmenu();
+		}
+		}
+	}
+	
+	static void Account() {
+		System.out.println("--------------------");
+		System.out.println("|  Welcome to sbi  |");
+		System.out.println("--------------------");
+		
+		System.out.println("--------------------");
+		System.out.println("|  Enter ur name:  |");
+		scn.nextLine();
+		String name=scn.nextLine();
+		
+		//System.out.println("-------------------------");
+		//System.out.println("  Enter the phone no:  ");
+		//long pno=scn.nextLong();
+		
+		
+		//String name=scn.nextLine();
+		System.out.println("-------------------");
+		System.out.println("   Enter state:    ");
+		//scn.nextLine();
+		String state=scn.nextLine();
+		
+		System.out.println("----------------------");
+		System.out.println("  Enter the district  ");
+		//scn.nextLine();
+	    String dst=scn.nextLine();
+	    
+	    System.out.println("-------------------------");
+	    System.out.println("  Enter the branch name  ");
+	    String branch=scn.nextLine();
+	    
+	    
+	    System.out.println("----------------------");
+	    System.out.println("  Enter the mobileNo  ");
+	    long mobileno=scn.nextLong();
+	    String mobileStr=String.valueOf(mobileno);
+	    
+	    if(mobileStr.length() ==10) {
+	    	System.out.println(" ");
+	    }
+	    else {
+	    	System.out.println("Invalid number");
+	    	Account();
+	    	
+		}
+	    System.out.println("---------------------");
+	    System.out.println("  Enter the balance  ");
+	    long balance=scn.nextLong();
+	    
+	    System.out.println("----------------------");
+	    System.out.println("  Enter emial id:     ");
+	    scn.nextLine();
+	    String email=scn.nextLine();
+	    System.out.println("----------------------");
+	    
+	    System.out.println("-------------------------");
+	    System.out.println("  Enter the password:    ");
+	    String pass=scn.nextLine();
+	    System.out.println("-------------------------");
+	    
+	    System.out.println("------------------------------");
+	    System.out.println("  Enter the confirm password  ");
+	    System.out.println("------------------------------");
+	    
+	    
+	    fname=name;//
+	    //fpno=pno;//
+	    fstate=state;//
+	    fdst=dst;//
+	    fbranch=branch;//
+	    fmobileno=mobileno;
+	    fbalance=balance;//
+	    femail=email;//
+	    //fpass1=pass;
+	    
+	   
+	    
+	    if(scn.nextLine().equals(pass)) {
+	    	System.out.println("=================================================");
+	    	System.out.println("|*  Congrats you account successfully created  *|");
+	    	System.out.println("=================================================");
+	    	fpass1=scn.nextLine();
+	    	Continue();
+	    	
+	    }
+	    else {
+	    	System.out.println("============================");
+	    	System.out.println("!!  password not matched  !!");
+	    	System.out.println("============================");
+	    	System.out.println("   Please one more attempt  ");
+	    	System.out.println("============================");
+	    	
+	    
+	    if(scn.nextLine().equals(pass)) {
+	    	System.out.println("=================================================");
+	    	System.out.println("|*  Congrats you account successfully created  *|");
+	    	System.out.println("=================================================");
+		    	fpass1=scn.nextLine();
+		    	Continue();
+		    	
+		    }
+	    else {
+	    	System.out.println("============================");
+	    	System.out.println("!!  password not matched  !!");
+	    	System.out.println("  Please one more attempt   ");
+	    	System.out.println("============================");
+	    }
+	    }
+		
+	}
+	
+	static void Continue() {
+		System.out.println("=============================================");
+		System.out.println("|    If your account is created press : 01  |");
+		System.out.println("=============================================");
+		System.out.println("|  If your account is not created press: 02 |");
+		System.out.println("=============================================");
+		
+		switch(scn.nextInt()) {
+		case 1:{
+			System.out.println("===========================");
+			System.out.println("|  Press 3: view details  |");
+			System.out.println("=================================");
+			System.out.println("|  press 4: New account create  |");
+			System.out.println("=================================");
+		switch(scn.nextInt()) {
+		case 3:{
+			customerdetails();
+			break;
+		}
+		case 4:{
+			Account();
+		}
+		default:{
+			System.out.println("=======================");
+			System.out.println("  Choose valid option  ");
+			System.out.println("=======================");
+			Continue();
+		}
+		}
+		break;
+		}
+		case 2:{
+			Mainmenu();
+			break;
+		}
+		default:{
+			System.out.println("===========================");
+			System.out.println("  plz choose valid option  ");
+			System.out.println("===========================");
+		}
+		}
+	}
+	
+	static void customerdetails() {
+		System.out.println("=========================");
+		System.out.println("|#  Customer details:  |#");
+		System.out.println("=========================");
+		System.out.println("Customer name   :"+fname);
+		System.out.println("A/C No          :"+accno[0]);
+		System.out.println("IFSC Code       :"+ifsc[0]);
+		System.out.println("Mobileno        :"+fmobileno);
+		System.out.println("State           :"+fstate);
+		System.out.println("Dst             :"+fdst);
+		System.out.println("Branch          :"+fbranch);
+		System.out.println("Email           :"+femail);
+		System.out.println("=========================");
+		System.out.println("Press 06 : for main ment");
+		System.out.println("=========================");
+		
+		if(scn.nextInt()==6) {
+		Mainmenu();
+		}
+	}
+	
+	static void NetBanking() {
+		if(fname==null) {
+			System.out.println("==========================");
+			System.out.println("  1St you create account  ");
+			System.out.println("==========================");
+			Mainmenu();
+		}
+		else {
+			System.out.println("==========================================");
+			System.out.println("||  Welcome to  sbi NetBanking account  ||");
+			System.out.println("=====================================");
+			System.out.println("||        Enter the emial id       ||");
+			System.out.println("==========================================");
+			scn.nextLine();
+			String email=scn.nextLine();
+			System.out.println("-------------------------------");
+			System.out.println("|# Enter the account number  #|");
+			System.out.println("-------------------------------");
+			long accno1=scn.nextLong();
+			if(accno1==accno[0]) {
+				System.out.println("------------------------");
+				System.out.println("|  Enter the password  |");
+				System.out.println("------------------------");
+				scn.nextLine();
+				String pass1=scn.nextLine();
+				fpass1=pass1;
+				System.out.println("------------------------------");
+				System.out.println("  Enter the confirm password  ");
+				System.out.println("------------------------------");
+				if(scn.nextLine().equals(pass1)) {
+					System.out.println("========================================");
+					System.out.println("|*  Congragulation ur a/c is created  *|");
+					System.out.println("========================================");
+					String fpass1=scn.nextLine();
+					NetBankingUser();
+				}
+				else {
+					System.out.println("=================================");
+					System.out.println("!!!  Password is not matched  !!!");
+					System.out.println("=================================");
+					System.out.println("One More attempt");
+					System.out.println("=================================");
+	
+				
+				if(scn.nextLine().equals(pass1)) {
+					System.out.println("========================================");
+					System.out.println("|*  Congragulation ur a/c is created  *|");
+					System.out.println("========================================");
+					String fpass1=scn.nextLine();
+					NetBankingUser();
+				}
+				else {
+					System.out.println("=================================");
+					System.out.println("!!!  Password is not matched  !!!");
+					System.out.println("=================================");
+					System.out.println("One More attempt");
+					System.out.println("=================================");
+				}
+				}
+			}
+			else {
+				System.out.println("==========================");
+				System.out.println(" Your account no is wrong ");
+				System.out.println("==========================");
+				System.out.println("Enter the correct a/c no");
+				System.out.println("==========================");
+				Mainmenu();
+			}
+				
+			}
+		}
+	static void Login() {
+		if(fpass1==null) {
+			System.out.println("=================================");
+			System.out.println("||  You 1st create ur account  ||");
+			System.out.println("=================================");
+			Mainmenu();
+		}
+		else {
+			System.out.println("--------------------------");
+			System.out.println("  Internet banking login  ");
+			System.out.println("--------------------------");
+			System.out.println("     Login you account    ");
+			System.out.println("--------------------------");
+			System.out.println("   Enter the user id:     ");
+			System.out.println("--------------------------");
+			if(scn.nextLine().equals(femail)) {
+				System.out.println("--------------------------");
+				System.out.println("  Enter the password:   ");
+				System.out.println("--------------------------");
+				if(scn.nextLine().equals(fpass1)) {
+					System.out.println("-------------------------------");
+					System.out.println("|* your login is successfull *|");
+					System.out.println("-------------------------------");
+					System.out.println(" Open internet banking details press:5 ");
+					System.out.println("---------------------------------------");
+					if(scn.nextInt()==5) {
+						Internetuserprofile();
+					}
+				}
+				else {
+					System.out.println("---------------------------");
+					System.out.println("|!! Wrong user password !!|");
+					System.out.println("---------------------------");
+					Login();
+				}
+			}
+			else {
+				System.out.println("---------------------------");
+				System.out.println("|!! Wrong user password !!|");
+				System.out.println("---------------------------");
+				Login();
+			}
+		}
+	}
+	
+	static void NetBankingUser() {
+		System.out.println("-----------------------------------------");
+		System.out.println("|*  Sbi internet banking user details  *|");
+		System.out.println("-----------------------------------------");
+		System.out.println("    Note the user id and password   ");
+		System.out.println("-----------------------------------------");
+		System.out.println("User id                :"+femail);
+		System.out.println("Password               :"+fpass1);
+		System.out.println("-----------------------------------------");
+		System.out.println("press 6: For main menu");
+		System.out.println("-----------------------------------------");
+		if(scn.nextInt()==6) {
+			Mainmenu();
+		}
+		
+	}
+	static void Internetuserprofile() {
+		System.out.println("=====================================");
+		System.out.println("|#   Internet sbi banking details  #|");
+		System.out.println("=====================================");
+		System.out.println("Name        :"+fname);
+		System.out.println("User id     :"+femail);
+		System.out.println("accno       :"+accno[0]);
+		System.out.println("=====================================");
+		System.out.println("Press 1: View the bank balance");
+		System.out.println("Press 2: View the user and password");
+		System.out.println("Press 3: View the account details");
+		System.out.println("Press 4: Add amount");
+		System.out.println("Press 5: Withdraw");
+		System.out.println("Press 6: View the mini statement");
+		System.out.println("Press 7: Logout");
+		System.out.println("=====================================");
+		
+		
+		switch(scn.nextInt()) {
+		case 1:{
+			System.out.println("=====================================");
+			System.out.println("Bank Balance   :"+fbalance);
+			System.out.println(" ");
+			System.out.println("Press 1        :For Back");
+			System.out.println("Press 2        :Mainmenu");
+			System.out.println("=====================================");
+			
+			switch(scn.nextInt()) {
+			case 1:{
+				Internetuserprofile();
+				break;
+			}
+			case 2:{
+				Mainmenu();
+				break;
+			}
+			default:{
+				System.out.println("=====================================");
+				System.out.println("   Please choose valid option  ");
+				System.out.println("=====================================");
+				System.out.println("Press 1: For Back");
+				System.out.println("Press 2: Main menu");
+				System.out.println("=====================================");
+				
+				switch(scn.nextInt()) {
+				case 1:{
+					Internetuserprofile();
+					break;
+				}
+				case 2:{
+					Mainmenu();
+					break;
+				}
+				
+				}
+			}
+			}
+			break;
+		}
+		case 2:{
+			System.out.println("=====================================");
+			System.out.println("  User id     :"+femail);
+			System.out.println("  PassWord    :"+fpass1);
+			System.out.println("=====================================");
+			System.out.println("Press 1: for Back");
+			System.out.println("Press 2: for MainMenu");
+			System.out.println("=====================================");
+			switch(scn.nextInt()) {
+			case 1:{
+				Internetuserprofile();
+				break;
+			}
+			case 2:{
+				Mainmenu();
+				break;
+			}
+			default:{
+				System.out.println("=====================================");
+				System.out.println("Please choose valid option");
+				System.out.println("=====================================");
+				System.out.println("Press 1: For Back");
+				System.out.println("Press 2: Main menu");
+				System.out.println("=====================================");
+				
+				switch(scn.nextInt()) {
+				case 1:{
+					Internetuserprofile();
+					break;
+				}
+				case 2:{
+					Mainmenu();
+					break;
+				}
+				}
+			}
+			}
+			break;
+		}
+		case 3:{
+			System.out.println("=====================================");
+			System.out.println("||*         Accont details:       *||");
+			System.out.println("=====================================");
+			System.out.println("Name       :"+fname);
+			System.out.println("A/C No     :"+accno[0]);
+			System.out.println("IFSC Code  :"+ifsc);
+			System.out.println("Mobile no  :"+fmobileno);
+			System.out.println("Branch     :"+fbranch);
+			System.out.println("District   :"+fdst);
+			System.out.println("State      :"+fstate);
+			System.out.println("Emiail id  :"+femail);
+			System.out.println("Balance    :"+fbalance);
+			System.out.println("=====================================");
+			
+			switch(scn.nextInt()) {
+			case 1:{
+				Internetuserprofile();
+				break;
+			}
+			case 2:{
+				Mainmenu();
+				break;
+			}
+			default:{
+				System.out.println("================================");
+				System.out.println("   Please choose valid option   ");
+				System.out.println("================================");
+				System.out.println("Press 1: For Back");
+				System.out.println("Press 2: Main menu");
+				System.out.println("================================");
+				
+				switch(scn.nextInt()) {
+				case 1:{
+					Internetuserprofile();
+					break;
+				}
+				case 2:{
+					Mainmenu();
+					break;
+				}
+				
+				}
+			}
+			}
+			break;
+		}
+		
+		case 4:{
+			Deposite();
+			break;
+		}
+		case 5:{
+			Withdraw();
+			break;
+		}
+		case 6:{
+			MiniStatement();
+			break;
+		}
+		case 7:{
+			Logout();
+			break;
+		}
+		default:{
+			System.out.println("================================");
+			System.out.println("  Plz choose valid option  ");
+			System.out.println("================================");
+			
+		}
+		}
+	}
+	
+
+	static void Deposite() {
+		
+		System.out.println("================================");
+		System.out.println("     Enter the add money:  ");
+		System.out.println("================================");
+		long crd=scn.nextLong();
+		fbalance+=crd;
+		credit=crd;
+		
+		System.out.println("================================");
+		System.out.println("||*  You credit successfully *||");
+		System.out.println("================================");
+		System.out.println("Credit balance:"+credit+"  "+LocalDate.now()+" "+LocalTime.now());
+		System.out.println("================================");
+		System.out.println("Press 1: for Back");
+		System.out.println("Press 2: for Main menu");
+		System.out.println("================================");
+		
+		
+		
+		switch (scn.nextInt()) {
+		case 1:{
+			Internetuserprofile();
+			break;
+		}
+		case 2:{
+			Mainmenu();
+			break;
+		}
+		default:{
+			System.out.println("==============================");
+			System.out.println("    Plz choose valid option   ");
+			System.out.println("==============================");
+		}
+		}	
+	}
+	
+	static void Withdraw() {
+		System.out.println("================================");
+		System.out.println("   Enter the money for debited  ");
+		System.out.println("================================");
+		long wd=scn.nextInt();
+		if(fbalance>=wd) {
+		
+		fbalance-=wd;
+		withdraw=wd;
+		System.out.println("=====================================");
+		System.out.println("|*  Your with draw is succssfully  *|");
+		System.out.println("=====================================");
+		System.out.println("Withdraw: "+withdraw+"  "+LocalDate.now()+" "+LocalTime.now());
+		System.out.println("=====================================");
+		System.out.println("Press 1: for Back");
+		System.out.println("Press 2: for Main menu");
+		System.out.println("=====================================");
+		
+		switch (scn.nextInt()) {
+		case 1:{
+			Internetuserprofile();
+			break;
+		}
+		case 2:{
+			Mainmenu();
+			break;
+		}
+		default:{
+			System.out.println("==============================");
+			System.out.println("    Plz choose valid option   ");
+			System.out.println("==============================");
+		}
+		}	
+		}
+		else {
+			System.out.println("===============================");
+			System.out.println("|!!!  Insufficent balance  !!!|");
+			System.out.println("===============================");
+		}
+		
+		
+	}
+	
+	static void MiniStatement() {
+		System.out.println("===============================");
+		System.out.println("||#   State Bank of India   #||");
+		System.out.println("===============================");
+		System.out.println("      MINI STATEMENT    ");
+		System.out.println("===============================");
+		prebal=(fbalance-credit+withdraw);
+		System.out.println("previous balance :"+(prebal));
+		System.out.println("Credit balance   :"+credit);
+		System.out.println("Withdraw balance :"+withdraw);
+		System.out.println("Total balance    :"+fbalance);
+		System.out.println("===============================");
+		
+		System.out.println("Press 1: for Back");
+		System.out.println("Press 2: for Main menu");
+		System.out.println("===============================");
+		
+
+		switch (scn.nextInt()) {
+		case 1:{
+			Internetuserprofile();
+			break;
+		}
+		case 2:{
+			Mainmenu();
+			break;
+		}
+		default:{
+			System.out.println("===============================");
+			System.out.println("   Plz choose valid option   ");
+			System.out.println("===============================");
+		}
+		}	
+		
+	}
+	
+	static void Logout() {
+	    
+	    femail = null;
+	    fpass1 = null;
+	    
+	    System.out.println("====================================");
+	    System.out.println("| You have successfully logged out |");
+	    System.out.println("====================================");
+	    
+	}
+
+	public static void main(String[] args) {
+		Mainmenu();
+	}
+}
+
+
+
